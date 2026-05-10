@@ -1,0 +1,266 @@
+/* * Variável global: root. 
+ * Ela centraliza as cores e o design system (Fiori Horizon), 
+ * tornando a manutenção e a criação de temas (como o modo escuro) muito mais fáceis.
+ */
+:root {
+    --sap-bg: #f5f6f7;
+    --sap-shell-bg: #ffffff;
+    --sap-card-bg: #ffffff;
+    --sap-primary-blue: #0070b2;
+    --sap-text-color: #1d2d3e;
+    --sap-secondary-text: #556b82;
+    --sap-border-color: #d8dde1;
+    --sap-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.08);
+}
+
+/* Reset básico de CSS para garantir que todos os navegadores renderizem o layout da mesma forma */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Garante que padding e borders não aumentem a largura total do elemento */
+    font-family: "72", "72full", Arial, Helvetica, sans-serif; /* Fonte padrão SAP Fiori */
+}
+
+body.sap-fiori-body {
+    background-color: var(--sap-bg);
+    color: var(--sap-text-color);
+    line-height: 1.5;
+}
+
+/* Shell Bar Estilo SAP: A barra de navegação fixa no topo */
+.sap-shell-bar {
+    background-color: var(--sap-shell-bg);
+    height: 3rem;
+    position: fixed; /* Fixa a barra no topo, não rola com a página */
+    top: 0;
+    width: 100%;
+    box-shadow: var(--sap-shadow);
+    z-index: 1000; /* Mantém a barra acima de todos os outros elementos */
+    border-bottom: 1px solid var(--sap-border-color);
+}
+
+.sap-shell-bar-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex; /* Flexbox para alinhar logotipo e navegação horizontalmente */
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 1rem;
+}
+
+.sap-logo {
+    color: var(--sap-primary-blue);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.sap-nav ul {
+    display: flex;
+    list-style: none; /* Remove os marcadores padrão de lista (bolinhas) */
+    gap: 1.5rem;
+}
+
+.sap-nav a {
+    text-decoration: none; /* Remove sublinhado dos links */
+    color: var(--sap-text-color);
+    font-size: 0.875rem;
+}
+
+.sap-nav a:hover {
+    color: var(--sap-primary-blue);
+    border-bottom: 2px solid var(--sap-primary-blue); /* Efeito visual ao passar o mouse */
+}
+
+/* Layout de Conteúdo */
+.sap-page-content {
+    margin-top: 4rem; /* Dá espaço para a barra fixa não cobrir o conteúdo */
+    padding: 2rem;
+    max-width: 1000px; /* Limita a largura para leitura confortável em telas grandes */
+    margin-left: auto;
+    margin-right: auto; /* Centraliza a caixa de conteúdo */
+}
+
+/* Object Header (Cabeçalho de informações principais do perfil) */
+.sap-object-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.sap-avatar {
+    width: 4rem;
+    height: 4rem;
+    background-color: #0070b2;
+    color: white;
+    border-radius: 50%; /* Transforma o quadrado num círculo perfeito */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Cards de Seção (Contêineres de conteúdo do portfólio) */
+.sap-section-card {
+    background-color: var(--sap-card-bg);
+    border-radius: 0.5rem;
+    box-shadow: var(--sap-shadow);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--sap-border-color);
+}
+
+.sap-section-card h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--sap-border-color);
+    padding-bottom: 0.5rem;
+}
+
+/* Formulário Estilo SAP */
+.sap-form-group {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.sap-form-group label {
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+    color: var(--sap-secondary-text);
+}
+
+.sap-form-group input, .sap-form-group textarea {
+    padding: 0.5rem;
+    border: 1px solid var(--sap-border-color);
+    border-radius: 0.25rem;
+}
+
+.sap-btn-primary {
+    background-color: var(--sap-primary-blue);
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.sap-btn-primary:hover {
+    background-color: #005a8f;
+}
+
+/* Estilo do botão de tema */
+.sap-btn-tema {
+    background: transparent;
+    border: 1px solid var(--sap-border-color);
+    color: var(--sap-text-color);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    margin-left: 1rem;
+}
+
+.sap-btn-tema:hover {
+    background-color: var(--sap-border-color);
+}
+
+/* * Variáveis para o Tema Escuro 
+ * Quando o JS adiciona a classe "tema-escuro" à tag <body>, 
+ * estas variáveis sobrescrevem as globais do :root, alterando a paleta de cores.
+ */
+body.tema-escuro {
+    --sap-bg: #12171c; /* Fundo principal escuro */
+    --sap-shell-bg: #1c2228; /* Fundo da barra superior */
+    --sap-card-bg: #1c2228; /* Fundo dos cards */
+    --sap-text-color: #fafafa; /* Texto claro para contraste */
+    --sap-secondary-text: #b8c1c9; /* Texto secundário */
+    --sap-border-color: #323b45; /* Bordas mais escuras */
+    --sap-primary-blue: #4eb1ff; /* Azul mais claro para maior visibilidade no fundo escuro */
+    --sap-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.4); /* Sombra mais densa */
+}
+
+/* --- Lógica de Navegação Dinâmica (Secções) --- */
+.sap-section-card {
+    display: none; /* Esconde todas as secções por defeito na renderização inicial */
+    animation: fadeIn 0.4s ease-in-out; /* Adiciona uma transição suave de opacidade e movimento ao aparecer */
+}
+
+/* Quando uma seção ganha essa classe via JS, ela volta a ser exibida como bloco */
+.sap-section-card.secao-ativa {
+    display: block; 
+}
+
+/* Animação Keyframe para o efeito visual de entrada das seções */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Agrupamento de Ações no Topo --- */
+.sap-acoes-topo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sap-btn-menu {
+    display: none; /* Oculta o botão de menu (hambúrguer) em telas grandes de computador */
+    background: transparent;
+    border: none;
+    color: var(--sap-primary-blue);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* --- Responsividade (Media Query ativada em ecrãs com largura máxima de 768px - Telemóveis e Tablets) --- */
+@media screen and (max-width: 768px) {
+    /* Mostra o botão de menu hambúrguer para dispositivos menores */
+    .sap-btn-menu {
+        display: block; 
+    }
+
+    /* Transforma o menu de navegação horizontal num painel vertical suspenso */
+    .sap-nav {
+        display: none; /* Mantém o menu escondido até que o botão hambúrguer seja clicado */
+        position: absolute;
+        top: 3rem; /* Posiciona logo abaixo da barra superior fixa */
+        left: 0;
+        width: 100%;
+        background-color: var(--sap-shell-bg);
+        box-shadow: var(--sap-shadow);
+        border-top: 1px solid var(--sap-border-color);
+        z-index: 999;
+    }
+
+    /* Classe injetada pelo JS para exibir o menu suspenso no mobile */
+    .sap-nav.menu-aberto {
+        display: block; 
+    }
+
+    .sap-nav ul {
+        flex-direction: column; /* Alinha os itens da lista verticalmente */
+        gap: 0;
+    }
+
+    .sap-nav a {
+        display: block; /* Ocupa a largura total para facilitar o toque (touch) */
+        padding: 1rem;
+        border-bottom: 1px solid var(--sap-border-color);
+    }
+
+    /* Ajusta o cabeçalho com a foto e o nome para ficar alinhado ao centro no mobile */
+    .sap-object-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    /* Reduz o preenchimento lateral para aproveitar melhor o espaço estreito da tela do celular */
+    .sap-page-content {
+        padding: 1rem;
+    }
+}
